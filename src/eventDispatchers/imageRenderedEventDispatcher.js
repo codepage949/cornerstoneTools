@@ -33,7 +33,11 @@ const onImageRendered = function(evt) {
 
   toolsToRender.forEach(tool => {
     if (tool.renderToolData) {
+      const context = eventData.canvasContext.canvas.getContext('2d');
+
+      context.save();
       tool.renderToolData(evt);
+      context.restore();
     }
   });
 };
